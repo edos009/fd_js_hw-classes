@@ -58,7 +58,56 @@ class RangeValidator {
 const rangeV1 = new RangeValidator(1, 20);
 console.log(rangeV1.validate(7));
 
-const rangeV2 = new RangeValidator(0, 50);
-console.log(rangeV2.validate(55));
+/*
+Создать класс Figure3D
+Создать классы-потомки для Шара, Цилиндра и Куба.
+У всех классов должен быть метод для рассчета объема.
+*/
 
+class Figure3D {
+  constructor(name) {
+    this.name = name;
+  }
+  getVolume(){
+    return null;
+  }
+}
 
+class Ball extends Figure3D {
+  constructor(radius) {
+    super("ball");
+    this.radius = radius;
+  }
+  getVolume(){
+    return 4/3 * (Math.PI * Math.pow(this.radius, 3))
+  };
+}
+
+class Cylinder extends Figure3D {
+  constructor(radius, height) {
+    super("cylinder");
+    this.radius = radius;
+    this.height = height;
+  }
+  getVolume() {
+    return Math.PI * Math.pow(this.radius, 2)* this.height;
+  }
+}
+
+class Cube extends Figure3D {
+  constructor(edge) {
+    super("cube");
+    this.edge = edge;
+  }
+  getVolume() {
+    return Math.pow(this.edge, 3);
+  }
+}
+
+const ball = new Ball(3);
+const cylinder = new Cylinder(2,5);
+const cube = new Cube(3);
+
+console.log(ball.getVolume());
+console.log(cylinder.getVolume());
+console.log(cube.getVolume());
