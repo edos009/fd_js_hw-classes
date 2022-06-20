@@ -20,7 +20,7 @@ class RangeValidator {
     return this._to;
   }
   set to(to) {
-    if (typeof to === false) {
+    if (typeof to !== "number") {
       throw new TypeError("To must be number!");
     }
     if (to <= this._from) {
@@ -34,7 +34,7 @@ class RangeValidator {
     return this._from;
   }
   set from(from) {
-    if (typeof from === false) {
+    if (typeof from !== "number") {
       throw new TypeError("From must be number!");
     }
 
@@ -68,7 +68,7 @@ class Figure3D {
   constructor(name) {
     this.name = name;
   }
-  getVolume(){
+  getVolume() {
     return null;
   }
 }
@@ -78,9 +78,9 @@ class Ball extends Figure3D {
     super("ball");
     this.radius = radius;
   }
-  getVolume(){
-    return 4/3 * (Math.PI * Math.pow(this.radius, 3))
-  };
+  getVolume() {
+    return (4 / 3) * (Math.PI * Math.pow(this.radius, 3));
+  }
 }
 
 class Cylinder extends Figure3D {
@@ -90,7 +90,7 @@ class Cylinder extends Figure3D {
     this.height = height;
   }
   getVolume() {
-    return Math.PI * Math.pow(this.radius, 2)* this.height;
+    return Math.PI * Math.pow(this.radius, 2) * this.height;
   }
 }
 
@@ -105,7 +105,7 @@ class Cube extends Figure3D {
 }
 
 const ball = new Ball(3);
-const cylinder = new Cylinder(2,5);
+const cylinder = new Cylinder(2, 5);
 const cube = new Cube(3);
 
 console.log(ball.getVolume());
